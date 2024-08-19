@@ -9,6 +9,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use("/api/products", productRouter)
 
+app.get("/", (req, res) => {
+    res.status(200).json({message: "connected"})
+})
+
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Connected to database")
